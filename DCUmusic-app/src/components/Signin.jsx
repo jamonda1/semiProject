@@ -31,12 +31,13 @@ export default function Signin() {
             passwdRef.current?.focus();
             return false;
         }
+        return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const check = check(); // 유효성 체크 함수 실행
-        if (!check) return;
+        const b = check(); // 유효성 체크 함수 실행
+        if (!b) return;
 
         try {
             const url = `http://localhost:7777/api/auth/login`; // 백엔드의 /login으로 요청 전송
@@ -46,10 +47,13 @@ export default function Signin() {
                     'Content-Type': 'application/json',
                 },
             });
+            const { result, message } = response;
 
             if (response.status === 200) {
                 alert('로그인 성공');
                 navigate('/');
+            } else {
+                alert(message);
             }
         } catch (error) {
             alert('Server Error: ' + error.message);
@@ -93,7 +97,7 @@ export default function Signin() {
                 {/* 버튼 */}
                 <Row>
                     <Col>
-                        <Button variant="primary" type="button">
+                        <Button variant="primary" type="submit">
                             로그인
                         </Button>
                         <Button variant="secondary" type="button" onClick={() => navigate('/signup')}>
