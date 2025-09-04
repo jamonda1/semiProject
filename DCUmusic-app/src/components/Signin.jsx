@@ -47,9 +47,12 @@ export default function Signin() {
                     'Content-Type': 'application/json',
                 },
             });
+            const { loginResultData } = response.data;
+            const { accessToken } = loginResultData;
 
             if (response.status === 200) {
                 alert('로그인 성공');
+                sessionStorage.setItem('accessToken', accessToken); // 세션에 토큰 저장
                 navigate('/');
             }
         } catch (error) {
