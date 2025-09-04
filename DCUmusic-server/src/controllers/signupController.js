@@ -8,7 +8,7 @@ exports.registerUser = async (req, res) => {
     console.log('name: ', name, 'email: ', email, 'passwd: ', passwd, 'repeatPasswd: ', repeatPasswd); // 잘 들어오는지 확인
 
     try {
-        // 비밀번호 중복 확인 (무결성 확보)
+        // 이메일 중복 확인 (무결성 확보)
         const selectSQL = `SELECT email FROM members WHERE email = ?`;
         const [selectResult] = await pool.query(selectSQL, [email]);
         if (selectResult.length > 0) {
