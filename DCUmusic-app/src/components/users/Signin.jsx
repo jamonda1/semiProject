@@ -2,7 +2,7 @@ import { FormGroup, Form, Row, Col, Button, FormLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import { useAuthStore } from '../stores/userAuthStore';
+import { useAuthStore } from '../../stores/userAuthStore';
 
 // 로그인 담당
 export default function Signin() {

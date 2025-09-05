@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown, Container, FormGroup, Button } from 'react-bootstrap';
+import { Col, Row, Navbar, Nav, NavDropdown, Container, FormGroup, Button, Table } from 'react-bootstrap';
 import { useAuthStore } from '../stores/userAuthStore';
 import axios from 'axios';
 
