@@ -1,8 +1,8 @@
 import { FormGroup, Form, Row, Col, Button, FormLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
-import axios from 'axios';
 import { useAuthStore } from '../../stores/userAuthStore';
+import { apiLogin } from '../../api/userApi';
 
 // 로그인 담당
 export default function Signin() {
@@ -43,13 +43,7 @@ export default function Signin() {
         if (!b) return;
 
         try {
-            const url = `http://localhost:1234/api/auth/login`; // 백엔드의 /login으로 요청 전송
-            const response = await axios.post(url, loginUser, {
-                // url에 formData와 헤더값 추가해서 전송
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            const response = await apiLogin(loginUser);
             // alert(JSON.stringify(response.data)); // 어떤 값들이 오는지 확인 완료.
 
             const { loginResultData } = response.data;
