@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
         res.json({
             result: 'success',
             message: '로그인 성공!!',
-            loginResultData: { accessToken, refreshToken, ...userPayload },
+            loginResultData: { accessToken, ...userPayload }, // 토큰(refreshToken은 일단 생략)과 함께 psswd를 제외한 모든 정보를 전달
         });
     } catch (error) {
         console.error(error);
@@ -78,7 +78,11 @@ exports.logout = async (req, res) => {
         const sql = `UPDATE members SET refreshToken = null WHERE email = ?`;
         const [result] = await pool.query(sql, [email]);
 
-        res.json({ result: 'success' });
+        if (result.affectedRows === 0) {
+            return res.status(400).json({ result: 'fail', message: '유효하지 않은 요청입니다' });
+        }
+
+        res.json({ result: 'success', message: '로그아웃 완료' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ result: 'fail', message: '로그아웃 실패: ' + error.message });

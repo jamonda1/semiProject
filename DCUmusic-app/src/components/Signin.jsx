@@ -2,11 +2,14 @@ import { FormGroup, Form, Row, Col, Button, FormLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import axios from 'axios';
+import { useAuthStore } from '../stores/userAuthStore';
 
 // 로그인 담당
 export default function Signin() {
     const navigate = useNavigate();
     const [loginUser, setLoginUser] = useState({ email: '', passwd: '' });
+    const loginAuthUser = useAuthStore((s) => s.loginAuthUser); // store에 login 값들을 저장하기 위해
+    // const authUser = useAuthStore((s) => s.authUser); // 결과값 확인 후 지우자
 
     const emailRef = useRef(null);
     const passwdRef = useRef(null);
@@ -47,8 +50,13 @@ export default function Signin() {
                     'Content-Type': 'application/json',
                 },
             });
+            // alert(JSON.stringify(response.data)); // 어떤 값들이 오는지 확인 완료.
+
             const { loginResultData } = response.data;
             const { accessToken } = loginResultData;
+
+            loginAuthUser({ ...loginResultData }); // store에 전달
+            // alert(authUser.name);
 
             if (response.status === 200) {
                 alert('로그인 성공');

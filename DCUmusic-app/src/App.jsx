@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Row, Col } from 'react-bootstrap';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Home from './components/Home';
