@@ -28,6 +28,11 @@
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 </div>
 
+### 메인 제공 기능
+|메인 화면|
+|------|
+|<img src="https://github.com/jamonda1/semiProject/blob/main/images/home.png?raw=true" />|
+
 [박승진]: <https://github.com/jamonda1>
 [윤종수]: <https://github.com/PongPong2>
 [황이솔]: <https://github.com/yisol03>
