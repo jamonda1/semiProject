@@ -32,6 +32,12 @@
 |메인 화면|
 |------|
 |<img src="https://github.com/jamonda1/semiProject/blob/main/images/home.png?raw=true" />|
+|로그인과 회원가입이 가능하며, 실시간으로 TOP 100까지의 차트 확인 가능|
+<br/>
+|좋아요 리스트|노래 추천|
+|------|------|
+|<img src="https://github.com/jamonda1/semiProject/blob/main/images/like.png" />|<img src="https://github.com/jamonda1/semiProject/blob/main/images/recommend.png?raw=true" />|
+|로그인을 하면 원하는 음악을 좋아요 및 삭제 가능|우측 하단에는 TOP 100을 기반으로 새로운 음악을 6곡 추천|
 
 [박승진]: <https://github.com/jamonda1>
 [윤종수]: <https://github.com/PongPong2>
