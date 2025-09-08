@@ -4,7 +4,7 @@ import { useAuthStore } from '../stores/authStore';
 import { userLikedSong } from '../api/userApi';
 import { useSongsListStore } from '../stores/likedSongsList';
 
-const MainContent = () => {
+const MainContent = ({ onSongSelect }) => {
     const [chartData, setChartData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -71,6 +71,10 @@ const MainContent = () => {
     if (error) {
         return <div className="text-center my-5 text-danger">오류: {error}</div>;
     }
+    // 함수가 song 객체를 직접 받도록 수정
+    const handleAlbumImageClick = (song) => {
+        onSongSelect(song); // onSongSelect prop에 올바른 song 객체 전달
+    };
 
     return (
         <div style={{ paddingBottom: '100px' }}>
@@ -96,24 +100,40 @@ const MainContent = () => {
                                         <th style={{ width: '80px' }}>앨범사진</th>
                                         <th>곡명</th>
                                         <th>아티스트</th>
-                                        <th>앨범명</th>
+                                        {/* <th>앨범명</th> */}
                                         <th>Like</th>
                                     </tr>
                                 </thead>
                                 <tbody style={{ textAlign: 'center', alignItems: 'center' }}>
                                     {chartData.map((song) => (
                                         <tr key={song.rank} className="chart-all">
-                                            <td>{song.rank}</td>
+                                            <td
+                                                onClick={() => handleAlbumImageClick(song)}
+                                                style={{ cursor: 'pointer' }}
+                                            >
+                                                {song.rank}
+                                            </td>
                                             <td>
                                                 <img
+                                                    onClick={() => handleAlbumImageClick(song)}
                                                     src={song.albumImage}
                                                     alt={song.albumName}
                                                     style={{ width: '70px', height: '70px' }}
                                                 />
                                             </td>
-                                            <td>{song.songName}</td>
-                                            <td>{song.artistName}</td>
-                                            <td>{song.albumName}</td>
+                                            <td
+                                                onClick={() => handleAlbumImageClick(song)}
+                                                style={{ cursor: 'pointer' }}
+                                            >
+                                                {song.songName}
+                                            </td>
+                                            <td
+                                                onClick={() => handleAlbumImageClick(song)}
+                                                style={{ cursor: 'pointer' }}
+                                            >
+                                                {song.artistName}
+                                            </td>
+                                            {/* <td>{song.albumName}</td> */}
                                             <td>
                                                 <button
                                                     id={song.rank}

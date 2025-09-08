@@ -4,7 +4,7 @@ import { useAuthStore } from '../stores/authStore';
 import { getLikedSongs, deleteLikedSong } from '../api/userApi';
 import { useSongsListStore } from '../stores/likedSongsList';
 
-const RightSidebar = () => {
+const RightSidebar = ({ onSongSelect }) => {
     const [randomSongs, setRandomSongs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -55,7 +55,7 @@ const RightSidebar = () => {
 
     const fetchChartData = async () => {
         const songsList = useSongsListStore.getState().songsList;
-        alert(JSON.stringify(songsList));
+        // alert(JSON.stringify(songsList));
         setLoading(true);
         setError(null);
         // alert(JSON.stringify(authUser));
@@ -90,6 +90,9 @@ const RightSidebar = () => {
     if (error) {
         return <div>오류가 발생했습니다: {error}</div>;
     }
+    const handleAlbumImageClick = (song) => {
+        onSongSelect(song); // onSongSelect prop에 올바른 song 객체 전달
+    };
 
     return (
         <div className="collapse d-md-block" id="recommendCollapse" style={{ marginTop: '3em' }}>
@@ -169,6 +172,7 @@ const RightSidebar = () => {
                                     ×
                                 </button>
                                 <img
+                                    // ⭐ 수정된 부분: song 객체를 인수로 전달합니다.
                                     src={song.album_image}
                                     className="circular"
                                     alt={`${song.songName} 앨범 커버`}
@@ -227,6 +231,8 @@ const RightSidebar = () => {
                             }}
                         >
                             <img
+                                // ⭐ 수정된 부분: song 객체를 인수로 전달합니다.
+                                onClick={() => handleAlbumImageClick(song)}
                                 src={song.albumImage}
                                 className="circular"
                                 alt={`${song.songName} 앨범 커버`}

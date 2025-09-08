@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 /* 전체 폰트, 배경, 텍스트 색상 설정 */
 body {
     background-color: #f8f9fa;
@@ -285,7 +286,7 @@ body {
 #player {
     background-color: #ffffff;
     border-top: 1px solid #e9ecef;
-    min-height: 80px;
+    min-height: 50px;
 }
 
 /* 플레이어 컨트롤 버튼 스타일 */
@@ -347,9 +348,9 @@ input[type='range'].form-range::-moz-range-thumb {
     border-radius: 50%;
 }
 
-/* 모바일용 진행 바 숨김(기본) */
-#mobile-progress-bar {
-    display: none;
+#song-img {
+    width: 15%;
+    height: 15%;
 }
 
 /* 모바일(768px 이하) 반응형 스타일 */
@@ -398,5 +399,83 @@ input[type='range'].form-range::-moz-range-thumb {
         left: 0;
         right: 0;
         bottom: 0;
+    }
+
+    .sidebar-nav li {
+        text-align: center;
+        font-weight: bold;
+    }
+    .sidebar-nav li a {
+        color: #3565af;
+        border: 2px solid #3565af;
+        border-radius: 15;
+        font-weight: bold;
+    }
+    .sidebar-nav li a:hover {
+        color: white;
+        background-color: #3565af;
+    }
+
+    #song-img {
+        width: 20%;
+        height: 20%;
+    }
+
+    #song-artistName,
+    #song-name {
+        color: #3565af;
+    }
+
+    #song-artistName,
+    #song-name {
+        font-size: 0.7em;
+    }
+
+    #side-music {
+        display: none !important;
+    }
+
+    /* 1. 테이블 전체를 반응형으로 설정하고 헤더 숨기기 */
+    .table thead {
+        display: none;
+    }
+
+    /* 2. 각 테이블 행을 가로로 정렬 */
+    .table tbody tr {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        border: 0.5px solid #3565af;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .table tbody tr:hover {
+        background-color: #e6f0ff;
+    }
+
+    /* 3. 테이블 셀(td)을 Flexbox 아이템으로 설정 */
+    .table tbody td {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: none;
+        padding: 5px;
+        background-color: #f8f9fa;
+    }
+    .table tbody tr:hover td {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    /* 4. 특정 열만 보이도록 설정 */
+    /* 앨범 순위, 앨범 사진, 곡명, 아티스트, 좋아요만 표시 */
+    .table tbody td:nth-child(1), /* 순위 */
+    .table tbody td:nth-child(2), /* 앨범 사진 */
+    .table tbody td:nth-child(3), /* 곡명 */
+    .table tbody td:nth-child(4), /* 아티스트 */
+    .table tbody td:nth-child(5) {
+        display: flex;
     }
 }

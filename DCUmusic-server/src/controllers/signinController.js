@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
         res.json({
             result: 'success',
             message: '로그인 성공!!',
-            loginResultData: { accessToken, ...userPayload }, // 토큰(refreshToken은 일단 생략)과 함께 psswd를 제외한 모든 정보를 전달
+            loginResultData: { accessToken, refreshToken, ...userPayload }, // 토큰(refreshToken은 일단 생략)과 함께 psswd를 제외한 모든 정보를 전달
         });
     } catch (error) {
         console.error(error);
@@ -87,4 +87,8 @@ exports.logout = async (req, res) => {
         console.error(error);
         res.status(500).json({ result: 'fail', message: '로그아웃 실패: ' + error.message });
     }
+};
+
+exports.getAuthenticUser = (req, res) => {
+    res.json(req.authUser);
 };

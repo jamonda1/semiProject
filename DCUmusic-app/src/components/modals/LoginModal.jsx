@@ -48,14 +48,14 @@ export default function LoginModal({ show, setShowLogin }) {
             //alert(JSON.stringify(response)); //{result:'success',message:'로그인 성공',data:{...}}
             // const { result, message, data } = response.data;
             const { loginResultData } = response.data;
-            const { accessToken } = loginResultData;
+            const { accessToken, refreshToken } = loginResultData;
 
             // alert(authUser.name);
 
             if (response.status === 200) {
                 alert('로그인 성공!');
-                sessionStorage.setItem('accessToken', accessToken);
-                // localStorage.setItem('refreshToken', refreshToken);
+                sessionStorage.setItem('accessToken', accessToken); // 스토리지에 저장
+                localStorage.setItem('refreshToken', refreshToken); // 스토리지에 저장
                 loginAuthUser({ ...loginResultData }); // store에 전달
             }
             resetForm();

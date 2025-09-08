@@ -31,6 +31,7 @@ const Header = ({ onShowSidebar, setShowLogin, setShowSignUp }) => {
                 logout(); // 스토어에 값 비우기
                 alert('로그아웃 성공');
                 sessionStorage.removeItem('accessToken'); // 세션에 저장된 토큰 삭제
+                localStorage.removeItem('refreshToken'); // 스토리지에 저장된 토큰 삭제
             }
         } catch (error) {
             if (error.response) {
@@ -47,6 +48,17 @@ const Header = ({ onShowSidebar, setShowLogin, setShowSignUp }) => {
         }
     };
 
+    const handleSearch = (event) => {
+        event.preventDefault();
+
+        const query = event.target.querySelector('input[type="search"]').value;
+
+        if (query) {
+            const searchUrl = `https://www.youtube.com/results?search_query=${query}`;
+            window.location.href = searchUrl;
+        }
+    };
+
     return (
         <Navbar expand="lg" className="main-header p-3" sticky="top">
             <Container fluid>
@@ -58,13 +70,12 @@ const Header = ({ onShowSidebar, setShowLogin, setShowSignUp }) => {
                     <List size={24} />
                 </button>
 
-                <Form className="search-bar d-flex flex-grow-1 me-3">
+                <Form className="search-bar d-flex flex-grow-1 me-3" onSubmit={handleSearch}>
                     <Search className="search-icon" />
                     <Form.Control
-                        // onSubmit={goMusic}
                         type="search"
                         placeholder="검색"
-                        className="me-2"
+                        className="me-2 form-control-sm"
                         aria-label="Search"
                     />
                 </Form>
