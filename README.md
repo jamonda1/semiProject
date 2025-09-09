@@ -29,12 +29,11 @@
 </div>
 
 ### 메인 제공 기능
-<div>
+
 |메인 화면|
 |------|
 |<img src="https://github.com/jamonda1/semiProject/blob/main/images/home.png?raw=true" />|
 |로그인과 회원가입이 가능하며, 실시간으로 TOP 100까지의 차트 확인 가능|
-</div>
 <br/>
 <div>
 |좋아요 리스트|노래 추천|
