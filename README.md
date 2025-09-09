@@ -38,7 +38,7 @@
 
 |좋아요 리스트|노래 추천|
 |------|------|
-|<img src="https://github.com/jamonda1/semiProject/blob/main/images/like.png?raw=true" width="150" />|<img src="https://github.com/jamonda1/semiProject/blob/main/images/recommend.png?raw=true" />|
+|<img src="https://github.com/jamonda1/semiProject/blob/main/images/like.png?raw=true" width="300" />|<img src="https://github.com/jamonda1/semiProject/blob/main/images/recommend.png?raw=true" />|
 |로그인을 하면 원하는 음악을 좋아요 및 삭제 가능|우측 하단에는 TOP 100을 기반으로 새로운 음악을 6곡 추천|
 
 
